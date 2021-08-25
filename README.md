@@ -1,0 +1,5 @@
+<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+
+terraform-module-template
+
+<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
