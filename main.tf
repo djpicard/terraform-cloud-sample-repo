@@ -37,3 +37,7 @@ output "enable_flow_log" {
 output "private_subnet_tags" {
   value = local.private_subnet_tags
 }
+
+output "public_subnet_tags" {
+  value = local.public_subnet_tags
+}
