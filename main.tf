@@ -28,7 +28,7 @@ output "name" {
 }
 
 output "account_tags" {
-  value = lookup(local.account_tags, "name", "{}")
+  value = local.account_tags
 }
 
 output "enable_flow_log" {
