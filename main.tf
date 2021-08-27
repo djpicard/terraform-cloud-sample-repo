@@ -16,9 +16,9 @@ locals {
   public_subnet_tags_tmp  = lookup(local.inputs, "public_subnet_tags", "{}")
   additional_tags_tmp     = lookup(local.inputs, "additional_tags", "{}")
 
-  private_subnet_tags = local.private_subnet_tags_tmp == "{}" ? {} : tomap(local.private_subnet_tags_tmp)
-  public_subnet_tags  = local.public_subnet_tags_tmp == "{}" ? {} : tomap(local.public_subnet_tags_tmp)
-  additional_tags     = local.additional_tags_tmp == "{}" ? {} : tomap(local.additional_tags_tmp)
+  private_subnet_tags = local.private_subnet_tags_tmp == "{}" ? {} : jsondecode(local.private_subnet_tags_tmp)
+  public_subnet_tags  = local.public_subnet_tags_tmp == "{}" ? {} : jsondecode(local.public_subnet_tags_tmp)
+  additional_tags     = local.additional_tags_tmp == "{}" ? {} : jsondecode(local.additional_tags_tmp)
 }
 
 variable "inputs" {
