@@ -9,11 +9,11 @@ locals {
   parent_id           = lookup(local.inputs, "parent_id", "")
   role_name           = lookup(local.inputs, "role_name", "terraformer")
   cidr                = lookup(local.inputs, "cidr", "10.0.0.0/16")
-  enable_flow_log     = lookup(local.inputs, "enable_flow_log", "false")
-  private_subnet_tags = lookup(local.inputs, "private_subnet_tags", "{}")
-  public_subnet_tags  = lookup(local.inputs, "public_subnet_tags", "{}")
+  enable_flow_log     = tobool(lookup(local.inputs, "enable_flow_log", "false"))
+  private_subnet_tags = tomap(lookup(local.inputs, "private_subnet_tags", "{}"))
+  public_subnet_tags  = tomap(lookup(local.inputs, "public_subnet_tags", "{}"))
   region              = lookup(local.inputs, "region", "us-east-1")
-  additional_tags     = lookup(local.inputs, "additional_tags", "{}")
+  additional_tags     = tomap(lookup(local.inputs, "additional_tags", "{}"))
 }
 
 variable "inputs" {
