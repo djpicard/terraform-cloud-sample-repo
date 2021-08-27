@@ -20,7 +20,7 @@ locals {
 variable "inputs" {
   description = "REQUIRED = Map of inputs for this specific account"
   type        = string
-  default     = "{name:sample\",\"region\":\"us-east-1\"}"
+  default     = "{\"name\":\"sample\",\"region\":\"us-east-1\"}"
 }
 
 output "name" {
