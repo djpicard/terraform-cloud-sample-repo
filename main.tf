@@ -12,13 +12,9 @@ locals {
   region              = lookup(local.inputs, "region", "us-east-1")
   enable_flow_log     = tobool(lookup(local.inputs, "enable_flow_log", "false"))
 
-  private_subnet_tags_tmp = lookup(local.inputs, "private_subnet_tags", "{}")
-  public_subnet_tags_tmp  = lookup(local.inputs, "public_subnet_tags", "{}")
-  additional_tags_tmp     = lookup(local.inputs, "additional_tags", "{}")
-
-  private_subnet_tags = local.private_subnet_tags_tmp == "{}" ? {} : jsondecode(local.private_subnet_tags_tmp)
-  public_subnet_tags  = local.public_subnet_tags_tmp == "{}" ? {} : jsondecode(local.public_subnet_tags_tmp)
-  additional_tags     = local.additional_tags_tmp == "{}" ? {} : jsondecode(local.additional_tags_tmp)
+  private_subnet_tags = jsondecode(lookup(local.inputs, "private_subnet_tags", "{}"))
+  public_subnet_tags  = jsondecode(lookup(local.inputs, "public_subnet_tags", "{}"))
+  additional_tags    = jsondecode(lookup(local.inputs, "additional_tags", "{}"))
 }
 
 variable "inputs" {
@@ -32,7 +28,7 @@ output "name" {
 }
 
 output "account_tags" {
-  value = lookup(local.account_tags, "name", {})
+  value = local.account_tags
 }
 
 output "enable_flow_log" {
