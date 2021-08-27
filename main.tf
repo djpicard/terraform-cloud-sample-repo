@@ -32,7 +32,7 @@ output "name" {
 }
 
 output "account_tags" {
-  value = local.account_tags
+  value = local.account_tags["name"]
 }
 
 output "enable_flow_log" {
