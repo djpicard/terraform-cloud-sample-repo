@@ -46,3 +46,7 @@ output "public_subnet_tags" {
 output "additional_tags" {
   value = local.additional_tags
 }
+
+output "role_name" {
+  value = local.role_name
+}
