@@ -48,5 +48,6 @@ output "additional_tags" {
 }
 
 output "role_name" {
+  description = "Role Name for primary role"
   value = local.role_name
 }
