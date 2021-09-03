@@ -42,3 +42,7 @@ output "private_subnet_tags" {
 output "public_subnet_tags" {
   value = local.public_subnet_tags
 }
+
+output "account_tags" {
+  value = local.account_tags
+}
