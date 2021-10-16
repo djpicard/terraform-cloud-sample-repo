@@ -24,6 +24,12 @@ This problem makes no sense. Terraform workspaces were specifically designed so 
 ### problem statement
 no possibility of keeping the Terraform backend configuration DRY across all our environments (S3 state bucket, region, DynamoDB table etc): for every sub-component (EKS, S3, IAM, MSK etc) of our infrastructure we had to redefine the Terraform backend configuration over and over again. More sub-components, and more pain for our SRE team. Terragrunt solves this issue by using the path_relative_to_include() function to figure out the current directory.
 
+### solution statement
+Not sure what they were trying to accomplish. This sounds like they wanted to deploy each module independently and not as one big environment. The way I have always deployed terraform is to create a bunch of modules then have a main.tf that calls every module. All of the state is stored in a single location and then if a resource needs to be updated/fixed you would taint that part of the state. I don't see the benefit for storing each module in their own state file when terraform allows you easy access to update your state for specific parts of your environment. This feels like a pre v0.11 issue where state management was not as good.
+
 ## global plan
 ### problem statement
 when the Terraform code grows significantly enough, it must be organised into folders. Terraform has no way of running a global plan or apply command across all those folders. Terragrunt has a plan-all and apply-all to make it easier to run the Terraform code across all folders.
+
+### solution statement
+Terragrunt does work better here. The best solution for this is to run each environment in their own workspace then parallelize the runners based upon the workspace being used. Spacelift.io allows for parallel runs, experimentation with GHA would be needed.
