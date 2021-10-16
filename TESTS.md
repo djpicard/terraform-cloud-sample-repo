@@ -1,4 +1,4 @@
-## dependency_chain: 
+## dependency chain: 
 ### problem statement
 the lack of Terraform module dependencies: it is not possible to dependency chain two modules in Terraform because it’s simply not supported. Terragrunt solves this by implementing the dependencies statement that allows other modules to be executed first.
 
